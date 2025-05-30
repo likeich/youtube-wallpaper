@@ -29,6 +29,11 @@
                 height: 100%;
                 border: 0;
             }
+
+            .no-input {
+                pointer-events: none;
+                user-select: none;
+            }
         </style>
     </head>
     <body>
@@ -54,6 +59,12 @@
             const controls = getBoolParam("controls", false);
             const mute = getBoolParam("mute", true);
             const loop = getBoolParam("loop", true);
+            const allowInput = getBoolParam("input", false);
+
+            if (!allowInput) {
+                document.documentElement.classList.add("no-input");
+                document.body.classList.add("no-input");
+            }
 
             let player;
 
