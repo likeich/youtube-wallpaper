@@ -32,14 +32,9 @@
         </style>
     </head>
     <body>
-        <div class="video-wrapper">
-            <iframe
-                id="ytFrame"
-                allow="autoplay; fullscreen"
-                allowfullscreen
-            ></iframe>
-        </div>
+        <div class="video-wrapper" id="playerContainer"></div>
 
+        <script src="https://www.youtube.com/iframe_api"></script>
         <script>
             const urlParams = new URLSearchParams(window.location.search);
 
@@ -56,12 +51,42 @@
 
             const videoId = getStringParam("videoId", "jfKfPfyJRdk");
             const autoplay = getBoolParam("autoplay", true);
-            const controls = getBoolParam("controls", false);
             const mute = getBoolParam("mute", true);
             const loop = getBoolParam("loop", true);
 
-            const iframe = document.getElementById("ytFrame");
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&controls=${controls ? 1 : 0}&mute=${mute ? 1 : 0}&loop=${loop ? 1 : 0}&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3`;
+            let player;
+
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player("playerContainer", {
+                    videoId,
+                    playerVars: {
+                        autoplay: autoplay ? 1 : 0,
+                        controls: 0,
+                        mute: mute ? 1 : 0,
+                        loop: loop ? 1 : 0,
+                        playlist: videoId,
+                        rel: 0,
+                        showinfo: 0,
+                        modestbranding: 1,
+                        iv_load_policy: 3,
+                    },
+                    events: {
+                        onReady: (event) => {
+                            if (autoplay) event.target.playVideo();
+                        },
+                    },
+                });
+            }
+
+            document.addEventListener("visibilitychange", () => {
+                if (
+                    document.visibilityState === "visible" &&
+                    player &&
+                    player.playVideo
+                ) {
+                    player.playVideo();
+                }
+            });
         </script>
     </body>
 </html>
