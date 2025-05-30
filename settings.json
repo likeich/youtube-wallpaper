@@ -58,7 +58,7 @@
       "defaultValue": 1.0,
       "range": {
         "start": 0.0,
-        "end": 5.0
+        "end": 2.0
       }
     }
   ]
