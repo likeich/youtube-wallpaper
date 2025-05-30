@@ -20,6 +20,12 @@
     },
     {
       "type": "switch",
+      "name": "Allow Input",
+      "key": "input",
+      "defaultValue": false
+    },
+    {
+      "type": "switch",
       "name": "Loop",
       "key": "loop",
       "defaultValue": true
