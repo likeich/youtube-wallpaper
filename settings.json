@@ -1,0 +1,28 @@
+{
+  "options": [
+    {
+      "type": "switch",
+      "name": "Autoplay",
+      "key": "autoplay",
+      "defaultValue": true
+    },
+    {
+      "type": "switch",
+      "name": "Mute",
+      "key": "mute",
+      "defaultValue": true
+    },
+    {
+      "type": "switch",
+      "name": "Show Controls",
+      "key": "controls",
+      "defaultValue": false
+    },
+    {
+      "type": "switch",
+      "name": "Loop",
+      "key": "loop",
+      "defaultValue": true
+    }
+  ]
+}
