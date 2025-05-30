@@ -13,6 +13,22 @@
       "defaultValue": true
     },
     {
+      "type": "slider",
+      "name": "Test Slider",
+      "key": "testSlider",
+      "defaultValue": 100,
+      "isInteger": true,
+      "range": {
+        "start": 0,
+        "end": 100
+      },
+      "visibleIf": {
+        "type": "equals",
+        "key": "mute",
+        "value": false
+      }
+    },
+    {
       "type": "switch",
       "name": "Show Controls",
       "key": "controls",

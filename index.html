@@ -60,6 +60,7 @@
             const mute = getBoolParam("mute", true);
             const loop = getBoolParam("loop", true);
             const allowInput = getBoolParam("input", false);
+            const volume = parseInt(getStringParam("volume", "100"));
 
             if (!allowInput) {
                 document.documentElement.classList.add("no-input");
@@ -84,6 +85,15 @@
                     },
                     events: {
                         onReady: (event) => {
+                            if (mute) {
+                                event.target.mute();
+                            } else {
+                                event.target.unMute();
+                                event.target.setVolume(
+                                    Math.min(100, Math.max(0, volume)),
+                                );
+                            }
+
                             if (autoplay) event.target.playVideo();
                         },
                     },
