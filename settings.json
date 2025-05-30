@@ -30,15 +30,20 @@
     },
     {
       "type": "switch",
-      "name": "Show Controls",
-      "key": "controls",
+      "name": "Allow Input",
+      "key": "input",
       "defaultValue": false
     },
     {
       "type": "switch",
-      "name": "Allow Input",
-      "key": "input",
-      "defaultValue": false
+      "name": "Show Controls",
+      "key": "controls",
+      "defaultValue": false,
+      "visibleIf": {
+        "type": "equals",
+        "key": "input",
+        "value": true
+      }
     },
     {
       "type": "switch",
