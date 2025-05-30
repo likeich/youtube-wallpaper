@@ -102,6 +102,7 @@
             const loop = getBoolParam("loop", true);
             const allowInput = getBoolParam("input", false);
             const volume = parseInt(getStringParam("volume", "100"));
+            const scale = parseFloat(getStringParam("scale", "1.0"));
 
             if (!allowInput) {
                 document.documentElement.classList.add("no-input");
@@ -109,6 +110,8 @@
             }
 
             const overlay = document.getElementById("overlay");
+            const wrapper = document.getElementById("playerContainer");
+            wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
 
             function showOverlay() {
                 overlay.classList.add("no-transition");

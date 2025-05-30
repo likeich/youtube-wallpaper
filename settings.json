@@ -50,6 +50,16 @@
       "name": "Loop",
       "key": "loop",
       "defaultValue": true
+    },
+    {
+      "type": "slider",
+      "name": "Scale",
+      "key": "scale",
+      "defaultValue": 1.0,
+      "range": {
+        "start": 0.0,
+        "end": 5.0
+      }
     }
   ]
 }
