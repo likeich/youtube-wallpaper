@@ -14,8 +14,8 @@
     },
     {
       "type": "slider",
-      "name": "Test Slider",
-      "key": "testSlider",
+      "name": "Volume",
+      "key": "volume",
       "defaultValue": 100,
       "isInteger": true,
       "range": {
