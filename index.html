@@ -87,8 +87,7 @@
 
             function getBoolParam(name, defaultValue = false) {
                 const value = urlParams.get(name);
-                if (value === null) return defaultValue;
-                return value === "true";
+                return value === null ? defaultValue : value === "true";
             }
 
             function getStringParam(name, defaultValue = "") {
@@ -119,7 +118,7 @@
                 });
             }
 
-            function hideOverlay(delay = 1500) {
+            function hideOverlay(delay = 250) {
                 setTimeout(() => {
                     overlay.classList.add("hidden");
                 }, delay);
@@ -153,8 +152,11 @@
                             }
 
                             if (autoplay) event.target.playVideo();
-
-                            hideOverlay();
+                        },
+                        onStateChange: (event) => {
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                hideOverlay();
+                            }
                         },
                     },
                 });
@@ -169,7 +171,7 @@
                     player.playVideo
                 ) {
                     player.playVideo();
-                    hideOverlay(); // Re-hide after short delay
+                    // Wait for it to re-enter PLAYING state to hide again
                 }
             });
         </script>
