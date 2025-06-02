@@ -95,7 +95,18 @@
                 return value || defaultValue;
             }
 
-            const videoId = getStringParam("videoId", "jfKfPfyJRdk");
+            const rawVideoId = urlParams.get("videoId");
+            if (!rawVideoId) {
+                const overlay = document.getElementById("overlay");
+                overlay.innerHTML = `<div style="color: white; font-family: sans-serif; text-align: center;">
+                    <h1>Error</h1>
+                    <p>Missing <code>videoId</code> parameter in URL</p>
+                </div>`;
+                overlay.classList.remove("hidden");
+                throw new Error("Missing videoId parameter.");
+            }
+            const videoId = rawVideoId;
+
             const autoplay = getBoolParam("autoplay", true);
             const controls = getBoolParam("controls", false);
             const mute = getBoolParam("mute", true);

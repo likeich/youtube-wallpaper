@@ -1,10 +1,10 @@
 {
   "options": [
     {
-      "type": "switch",
-      "name": "Autoplay",
-      "key": "autoplay",
-      "defaultValue": true
+      "type": "text",
+      "name": "Video ID",
+      "key": "videoId",
+      "defaultValue": ""
     },
     {
       "type": "switch",
